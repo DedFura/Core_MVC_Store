@@ -63,6 +63,8 @@ namespace Core_MVC_Store
                 endpoints.MapControllerRoute("Areas", "{area=Customer}/{controller=Home}/{action=Index}/{id?}");
 
             });
+            
         }
+
     }
 }
