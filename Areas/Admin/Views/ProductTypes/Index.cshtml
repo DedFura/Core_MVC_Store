@@ -9,31 +9,36 @@
 @*3. Попробовать создать частичное представление и вывести через него сообщение о успешном добавлении*@
 @*4. Привести в вид, как минимум близкий к скриншоту*@
 
+@if (TempData["Successful"] != null)
+{
+    <partial name="_SuccessfullyCompletedPartial" model='TempData["Successful"]' />
+}
 <div class="row mt-2">
     <div class="col-6">
         <h2 class="text-info"> Product Types List </h2>
     </div>
     <div class="col-6 text-right pt-1">
-        <a asp-action="Create" class="btn btn-primary ">&nbsp; New Product Type </a>
+        <a asp-action="Create" class="btn btn-primary "> <i class="fas fa-plus"></i>&nbsp; New Product Type </a>
     </div>
 </div>
 
 <div class="row mt-2">
     <div class="col">
-        <table class="table table-striped border-info">
+        <table class="table table-striped">
             <thead class="table-info">
                 <tr>
                     <th>@Html.DisplayNameFor(x => x.Name)</th>
+                    <th></th>
                     <th></th>
                 </tr>
             </thead>
             <tbody>
                 @foreach(var item in Model)
                 {
-                    <tr>
-                        <td>@Html.DisplayFor(x => item.Name)</td>
-                        <td><partial name="_TableButtonPartial" model="item.Id"/></td>
-                    </tr>
+                <tr>
+                    <td>@Html.DisplayFor(x => item.Name)</td>
+                    <td><partial name="_TableButtonPartial" model="item.Id" /></td>
+                </tr>
                 }
             </tbody>
         </table>

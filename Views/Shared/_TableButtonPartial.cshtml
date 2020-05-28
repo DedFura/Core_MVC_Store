@@ -1,11 +1,12 @@
-﻿@model int
+﻿@using System.Web
+@model int
 
 <td style="width: 150px">
     <div class="btn-group" role="group">
         <!--Somefing comment-->
         @*Somefing comment*@
-        <a type="button" class="btn btn-primary" href="@Url.Action("Edit/" + Model)">Edit</a>
-        <a type="button" class="btn btn-success" href="@Url.Action("Details/" + Model)">Details</a>
-        <a type="button" class="btn btn-danger" href="@Url.Action("Delete/" + Model)">Delete</a>
+        <a type="button" class="btn btn-primary" href="@HttpUtility.UrlDecode(Url.Action("Edit/" + Model))"><i class="fas fa-edit"></i></a>
+        <a type="button" class="btn btn-success" href="@HttpUtility.UrlDecode(Url.Action("Details/" + Model))"><i class="far fa-list-alt"></i></a>
+        <a type="button" class="btn btn-danger" href="@HttpUtility.UrlDecode(Url.Action("Delete/" + Model))"><i class="fas fa-trash"></i></a>
     </div>
 </td>
