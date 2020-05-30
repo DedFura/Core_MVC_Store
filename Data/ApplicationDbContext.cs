@@ -13,7 +13,8 @@ namespace Core_MVC_Store.Data
             : base(options)
         {
         }
-
+        
         public DbSet<ProductTypes> ProductTypeses { get; set; }
+        public DbSet<SpecialTags> SpecialTagses { get; set; }
     }
 }
