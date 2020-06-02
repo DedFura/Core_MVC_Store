@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Core_MVC_Store.Areas.Admin.Controllers
 {
-    [Area("Admin")]
+    [Area(nameof(Admin))]
     public class SpecialTagsController : Controller
     {
         private readonly ApplicationDbContext _db;
@@ -41,7 +41,7 @@ namespace Core_MVC_Store.Areas.Admin.Controllers
 
                 await _db.SaveChangesAsync();
 
-                TempData["Successful"] = $"New product type: { specialTags.Name} is added!";
+                TempData["Successful"] = $"New special tag: { specialTags.Name} is added!";
                 // Добавить сообщение о успешном добавлении категории
 
                 return RedirectToAction(nameof(Index));
@@ -59,7 +59,7 @@ namespace Core_MVC_Store.Areas.Admin.Controllers
                 return NotFound();
 
             // Получаем редактируемую модель по ID асинхронно
-            var specialTag = await _db.ProductTypeses.FindAsync(id);
+            var specialTag = await _db.SpecialTagses.FindAsync(id);
 
             // Проверяем полученную модель на NULL
             if (specialTag == null)
@@ -89,7 +89,7 @@ namespace Core_MVC_Store.Areas.Admin.Controllers
                 await _db.SaveChangesAsync();
 
                 // Добавляем сообщение об успешном обновлении
-                TempData["Successful"] = $"Product type: { specialTags.Name} update success!";
+                TempData["Successful"] = $"Special tag: { specialTags.Name} update success!";
 
                 // Переадресовываем пользователя на страницу Index
                 return RedirectToAction(nameof(Index));
@@ -108,7 +108,7 @@ namespace Core_MVC_Store.Areas.Admin.Controllers
                 return NotFound();
 
             // Получаем редактируемую модель по ID асинхронно
-            var specialTag = await _db.ProductTypeses.FindAsync(id);
+            var specialTag = await _db.SpecialTagses.FindAsync(id);
 
             // Проверяем полученную модель на NULL
             if (specialTag == null)
@@ -127,7 +127,7 @@ namespace Core_MVC_Store.Areas.Admin.Controllers
                 return NotFound();
 
             // Получаем редактируемую модель по ID асинхронно
-            var specialTag = await _db.ProductTypeses.FindAsync(id);
+            var specialTag = await _db.SpecialTagses.FindAsync(id);
 
             // Проверяем полученную модель на NULL
             if (specialTag == null)
@@ -144,16 +144,16 @@ namespace Core_MVC_Store.Areas.Admin.Controllers
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             // Получаем редактируемую модель по ID асинхронно
-            var specialTag = await _db.ProductTypeses.FindAsync(id);
+            var specialTag = await _db.SpecialTagses.FindAsync(id);
 
             // Гдаляем модель из базы
-            _db.ProductTypeses.Remove(specialTag);
+            _db.SpecialTagses.Remove(specialTag);
 
             // Сохраняем изменения в базу данных асинхронно
             await _db.SaveChangesAsync();
 
             // Добавляем сообщение об успешном обновлении
-            TempData["Successful"] = $"Product type: { specialTag.Name} delete success!";
+            TempData["Successful"] = $"Special tag: { specialTag.Name} delete success!";
 
             // Переадресовываем пользователя на страницу Index
             return RedirectToAction(nameof(Index));

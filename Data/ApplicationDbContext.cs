@@ -16,5 +16,6 @@ namespace Core_MVC_Store.Data
         
         public DbSet<ProductTypes> ProductTypeses { get; set; }
         public DbSet<SpecialTags> SpecialTagses { get; set; }
+        public DbSet<Products> Productses { get; set; }
     }
 }

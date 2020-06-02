@@ -3,11 +3,6 @@
     ViewData["Title"] = "Index";
 }
 
-@*Реализовать вывод сообщения об успешном добавлении товара*@
-@*1. Сообщение должно распологаться в своём ряду (ROW + COL)*@
-@*2. Сообщение должно быть на зелёном фоне*@
-@*3. Попробовать создать частичное представление и вывести через него сообщение о успешном добавлении*@
-@*4. Привести в вид, как минимум близкий к скриншоту*@
 
 @if (TempData["Successful"] != null)
 {
@@ -15,10 +10,10 @@
 }
 <div class="row mt-2">
     <div class="col-6">
-        <h2 class="text-info"> Product Types List </h2>
+        <h2 class="text-info"> Special Tags List </h2>
     </div>
     <div class="col-6 text-right pt-1">
-        <a asp-action="Create" class="btn btn-primary "> <i class="fas fa-plus"></i>&nbsp; New Product Type </a>
+        <a asp-action="Create" class="btn btn-primary "> <i class="fas fa-plus"></i>&nbsp; New Tag </a>
     </div>
 </div>
 
