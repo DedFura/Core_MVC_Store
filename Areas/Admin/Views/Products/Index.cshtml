@@ -3,23 +3,26 @@
     ViewData["Title"] = "Index";
 }
 
+
 @if (TempData["Successful"] != null)
 {
     <partial name="_SuccessfullyCompletedPartial" model='TempData["Successful"]' />
 }
+
+
 <div class="row mt-2">
     <div class="col-6">
         <h2 class="text-info">Список товаров</h2>
     </div>
     <div class="col-6 text-right pt-1">
-        <a class="btn btn-primary" href=""><i class="fas fa-plus"></i>&nbsp; Добавить новый продукт </a>
+        <a class="btn btn-primary" asp-action="Create"><i class="fas fa-plus"></i>&nbsp; Добавить новый продукт </a>
     </div>
 </div>
 
 @*<div class ="container container-fluid">*@
 <div class="row mt-2">
     <div class="col">
-        <table class="table table-bordered">
+        <table class="table table-bordered table-responsive-sm">
             <thead class="table-bordered table-info">
                 <tr>
                     <th>Наименование</th>
@@ -28,6 +31,7 @@
                     <th>Цвет</th>
                     <th>Категория</th>
                     <th>Специальный тег</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -35,7 +39,7 @@
                 {
                     <tr>
                         <td>
-                            <img src="@Html.DisplayFor(x => item.Image)" alt="" class="img-thumbnail float-left" />
+                            @* <img src="@Html.DisplayFor(x => item.Image)" alt="" class="img-thumbnail float-left" />*@
                             @Html.DisplayFor(x => item.Name)
                         </td>
                         <td>@Html.DisplayFor(x => item.Available)</td>
@@ -43,7 +47,9 @@
                         <td>@Html.DisplayFor(x => item.ShadeColor)</td>
                         <td>@Html.DisplayFor(x => item.ProductTypes)</td>
                         <td>@Html.DisplayFor(x => item.SpecialTags)</td>
+                        <partial name="_TableButtonPartial" model="item.Id"/>
                     </tr>
+
                 }
 
             </tbody>

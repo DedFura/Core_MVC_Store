@@ -61,7 +61,6 @@ namespace Core_MVC_Store
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute("Areas", "{area=Customer}/{controller=Home}/{action=Index}/{id?}");
-
             });
             
         }
