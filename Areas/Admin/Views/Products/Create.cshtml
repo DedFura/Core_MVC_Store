@@ -1,0 +1,94 @@
+﻿@model Core_MVC_Store.Models.ViewModels.ProductsVM
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="row mt-1">
+    <div class="col">
+        <h2 class="text-info text-center"> Добавление товара</h2>
+    </div>
+</div>
+<div class=" row mt-1">
+    <div class="col">
+        <div class="p-4 border rounded">
+            <div class="alert alert-danger" asp-validation-summary="ModelOnly"></div>
+
+                <form method="post" enctype="multipart/form-data">
+                    <div class="form-group row custom-file ml-auto pt-4">
+                        <label class="col-sm-9 custom-file-label" asp-for="Products.Image">Выберите фото</label>
+                        <input type="file" name="files" class="custom-file-input form-control" asp-for="Products.Image">
+                    </div>
+                </form>     
+
+            <form method="post" asp-action="Create">
+            <div class="form-group row">
+                 <label asp-for="Products.Name" class="col-sm-2 col-form-label"> Наименоваие: </label>
+                <div class="col-sm-7">
+                    <input class="form-control" asp-for="Products.Name"/>
+                    </div>
+                 <span class="text-danger" asp-validation-for="Products.Name"></span>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-sm-2 form-check-label" asp-for="Products.Available"> Доступность: </label>
+                <div class="col-sm-1">
+                    <div class="form-check">
+                        <input class="form-check-input" asp-for="Products.Available">
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label asp-for="Products.Price" class="col-sm-2 col-form-label"> Цена: </label>
+                <div class="col-sm-7">
+                    <input class="form-control" asp-for="Products.Price"/>
+                </div>
+                <span class="text-danger" asp-validation-for="Products.Price"></span>
+            </div>
+
+            <div class="form-group row">
+                <label asp-for="Products.ShadeColor" class="col-sm-2 col-form-label"> Цвет: </label>
+                <div class="col-sm-7">
+                    <input class="form-control" asp-for="Products.ShadeColor"/>
+                </div>
+                <span class="text-danger" asp-validation-for="Products.ShadeColor"></span>
+            </div>
+
+            <div class="form-group row">
+                <label asp-for="Products.ProductTypes" class="col-sm-2 col-form-label"> Категория: </label>
+                <div class="col-sm-7">
+
+                    <select class="form-control" asp-for="Products.ProductTypes">
+                        @foreach (var item in Model.ProductTypes)
+                        {
+                            <option>@Html.DisplayFor(x => item.Name)</option>
+                        }
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label asp-for="Products.SpecialTags" class="col-sm-2 col-form-label"> Специальный тег: </label>
+                <div class="col-sm-7">
+                    <select class="form-control" asp-for="Products.SpecialTags">
+                        @foreach (var item in Model.SpecialTags)
+                        {
+                            <option>@Html.DisplayFor(x => item.Name)</option>
+                        }
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <input class="btn btn-primary" type="submit" value="Добавать"/>
+                <a class="btn btn-success" asp-action="Index">Назад к списку</a>
+            </div>
+        </form>
+    </div>
+        
+    </div>
+</div>
+@section Scripts
+{
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+
+}
